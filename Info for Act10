@@ -1,0 +1,29 @@
+//
+//  Database.c
+//  Herramientas de Programacion Aplicada I
+//
+//  Created by Mario De Roux on 11/09/17.
+//  Copyright © 2017 Mario De Roux. All rights reserved.
+//
+// El programa imprime todo lo que hay en un archivo, en el caso de utilizar los datos especifica las variables con los datos a leer (en caso de un numero usa una variable tipo entero y asi).
+//
+//
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    //Se define un puntero al archivo, "data" es un identificador puede se cualquiera.
+    FILE *data;
+    char name[255];
+    //La variable data de tipo archivo (FILE) obtiene la informacion utilizando la funcion fopen seguida de: ("ruta del archivo","r") aqui "r" significa que es solo lectura.
+    data=fopen("/Users/marioderoux/Documents/HPAI/Data.txt","r");
+    //Aqui ejecuta el ciclo hasta feof (final del archivo).
+    while (!(feof(data)))
+    {
+        //fgets obtiene cadenas de texto y las almacena en la variable name tipo caracter. Es diferente dependiendo del tipo de dato q se lee, en tu caso debes usar fscanf (usa los ejemplos del pdf de tema de archivos).
+        fgets(name, 255, (FILE*)data);
+        printf("%s \n", name);
+    }
+    //Cierra el archivo).
+    fclose(data);
+}
